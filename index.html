@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fantasy Coin Collector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Level Transition Overlay -->
+    <div id="transition-overlay" class="hidden">
+        <h2 id="transition-text">Level 2</h2>
+    </div>
+
+    <!-- Gameplay UI -->
+    <div id="ui-container">
+        <div id="top-bar">
+            <div id="score-board">Score: 0</div>
+            <div id="high-score">Best: 0</div>
+        </div>
+
+        <div id="level-display">Level 1</div>
+        <div id="health-display">❤️❤️❤️</div>
+
+        <div id="dash-container">
+            <div id="dash-bar"></div>
+            <div id="dash-text">DASH (SPACE)</div>
+        </div>
+        <!-- Fire Bar -->
+        <div id="fire-container">
+            <div id="fire-bar"></div>
+            <div id="fire-text">FIRE (F)</div>
+        </div>
+
+        <div id="combo-display" class="hidden">x2 COMBO!</div>
+
+        <!-- Floating Text Container -->
+        <div id="floating-text-container"></div>
+
+        <div id="achievement-popup" class="hidden">
+            <div id="ach-icon">🏆</div>
+            <div id="ach-text">
+                <span id="ach-title">New Achievement!</span>
+                <span id="ach-desc">Collected 100 Coins</span>
+            </div>
+        </div>
+
+        <div id="controls-hint">Desktop: WASD + Arrays | FIRE: F | DASH: Space | ESC: Pause</div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="pause-menu" class="hidden">
+        <h1>PAUSED</h1>
+        <button onclick="resumeGame()">Resume</button>
+        <button id="audio-btn" onclick="toggleAudio()">Audio: ON</button>
+        <button onclick="restartGame()">Restart</button>
+    </div>
+
+    <!-- Mobile Controls -->
+    <div id="mobile-controls">
+        <div id="joystick-left" class="joystick-base">
+            <div class="joystick-stick"></div>
+        </div>
+        <!-- Fire Button -->
+        <div id="fire-btn-mobile" ontouchstart="triggerFire(event)">🔥</div>
+        <!-- Dash Button -->
+        <div id="dash-btn-mobile" ontouchstart="triggerDash(event)">⚡</div>
+        <div id="joystick-right" class="joystick-base">
+            <div class="joystick-stick"></div>
+        </div>
+        <!-- Mobile Pause Btn -->
+        <div id="pause-btn-mobile" ontouchstart="togglePause(event)">II</div>
+    </div>
+
+    <!-- Game Over / Victory Screen -->
+    <div id="game-over-screen" class="hidden">
+        <h1 id="go-title">GAME OVER</h1>
+        <p id="final-stats">Score: 0</p>
+
+        <div id="stats-summary">
+            <h3>Lifetime Stats</h3>
+            <p>Total Coins: <span id="stat-coins">0</span></p>
+            <p>Total Deaths: <span id="stat-deaths">0</span></p>
+            <p>Highest Level: <span id="stat-level">1</span></p>
+        </div>
+
+        <div id="badges-container"></div>
+
+        <button onclick="restartGame()">Try Again</button>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+    <script src="game.js"></script>
+</body>
+
+</html>
